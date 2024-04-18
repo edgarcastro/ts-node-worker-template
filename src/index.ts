@@ -1,8 +1,17 @@
-import figlet from 'figlet';
-import chalk from 'chalk';
-import * as packageJSON from '../package.json';
+import winston from 'winston';
+
+const logger = winston.createLogger({
+  transports: [
+    new winston.transports.Console({
+      format: winston.format.combine(
+        winston.format.colorize(),
+        winston.format.simple(),
+      ),
+    }),
+    new winston.transports.File({filename: '.logs/debug.log'}),
+  ],
+});
 
 (async function () {
-  console.log(figlet.textSync(packageJSON.name));
-  console.log(chalk.italic.green('Add your code here'));
+  logger.info('Add your code here');
 })();

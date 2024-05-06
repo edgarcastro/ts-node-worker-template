@@ -8,7 +8,7 @@ const logger = winston.createLogger({
         winston.format.simple(),
       ),
     }),
-    new winston.transports.File({filename: '.logs/debug.log'}),
+    new winston.transports.File({filename: `.logs/debug-${Date.now()}.log`}),
   ],
 });
 
